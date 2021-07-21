@@ -1,12 +1,13 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const messagesRouter = require('./routes/messages');
+const roomsRouter = require('./routes/rooms');
+const mealsRouter = require('./routes/meals');
+
 const app = express();
+const port = process.env.PORT || 8000;
 
 app.use(express.json());
-
-const port = process.env.PORT || 8000;
 
 app.use(
   cors({
@@ -14,7 +15,8 @@ app.use(
   })
 );
 
-app.use('/messages', messagesRouter);
+app.use('/rooms', roomsRouter);
+app.use('/meals', mealsRouter);
 
 app.listen(port, () => {
   console.log(`Listen on port ${port}`);

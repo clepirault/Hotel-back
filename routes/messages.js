@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const pool = require('../config/mysql');
+const pool = require('../config/db-config');
 
 // query : /messages?sort=asc > trier ou filtrer
 // params : /messages/:id > sélection
