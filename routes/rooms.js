@@ -35,27 +35,19 @@ router.get('/:name', (req, res) => {
   );
 });
 
-// =================================
-// AFFICHER LES CHAMBRES DISPONIBLES
-// =================================
+// =====================================================
+// AFFICHER LA CHAMBRE SELECTIONNEE POUR UNE RESERVATION
+// =====================================================
 
-/* router.get('/availabilities/:stock', (req, res) => {
-  const { stock } = req.params;
-  pool.query(
-    'SELECT name FROM room WHERE stock >= ?',
-    stock,
-    (error, results) => {
-      if (error) {
-        res.status(500).json(error);
-      } else {
-        if (results.length){
-          res.status(200).send(results);
-        }else{
-          res.status(404).send('not available');
-        }   
-      }
+router.get('/booking/:id', (req, res) => {
+  const {id} = req.params;
+  pool.query('SELECT room.name FROM room JOIN booking ON booking.room_id = room.id WHERE booking.id = ?', id, (error, results) => {
+    if (error) {
+      res.status(500).json(error);
+    } else {
+      res.status(200).send(results);
     }
-  );
-}); */
+  });
+});
 
 module.exports = router;

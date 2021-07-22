@@ -16,4 +16,19 @@ router.get('/', (req, res) => {
   });
 });
 
+// ====================================================
+// AFFICHER LES REPAS SELECTIONNES POUR UNE RESERVATION
+// ====================================================
+
+router.get('/:id', (req, res) => {
+  const {id} = req.params;
+  pool.query('SELECT meal.type FROM meal JOIN booking ON booking.meal_id = meal.id WHERE booking.id = ?', id, (error, results) => {
+    if (error) {
+      res.status(500).json(error);
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
+
 module.exports = router;

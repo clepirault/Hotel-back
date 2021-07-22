@@ -20,6 +20,21 @@ router.get('/', (req, res) => {
 // CREER UNE NOUVELLE RESERVATION
 // ==============================
 
+router.post('/', (req, res) => {
+  const newBooking = req.body;
+  pool.query(
+    `INSERT INTO booking SET ?`, [newBooking], (error, results) => {
+      if (error) {
+        res.status(500).send(error);
+      } else {
+        res.status(201).send({
+          id: results.insertId,
+          ...newBooking,
+        });
+      }
+    }
+  );
+});
 
 
 module.exports = router;

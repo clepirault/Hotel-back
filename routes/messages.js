@@ -6,16 +6,7 @@ const pool = require('../config/db-config');
 // params : /messages/:id > sélection
 // body : corps attaché à la requête : { id: 1, content: 'it works' } > créer ou mettre à jour
 
-// findAll
-router.get('/', function (request, response) {
-  pool.query('SELECT * FROM message', (error, results) => {
-    if (error) {
-      response.status(500).send(error);
-    } else {
-      response.send(results);
-    }
-  });
-});
+
 
 // findById
 router.get('/:id', function (request, response) {
