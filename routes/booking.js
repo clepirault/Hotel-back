@@ -36,5 +36,23 @@ router.post('/', (req, res) => {
   );
 });
 
+// =========================
+// SUPPRIMER UNE RESERVATION
+// =========================
+
+router.delete('/:id', (req, res) => {
+  const {id} = req.params;
+  pool.query(
+    'DELETE FROM booking WHERE id = ?', id, (error, results) => {
+      if (error) {
+        res.status(500).send(error);
+      } else {
+        res.sendStatus(204);
+      }
+    }
+  );
+});
+
+
 
 module.exports = router;
