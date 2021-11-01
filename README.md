@@ -3,7 +3,7 @@
 👉 Watch the frontend project : [here](https://github.com/clepirault/Hotel)
 
 ## Stack 💎 :
-**Node, MySQL**
+**Node, Express, MySQL**
 
 ## Links 🔗 :
 * [Frontend project](https://github.com/clepirault/Hotel)
